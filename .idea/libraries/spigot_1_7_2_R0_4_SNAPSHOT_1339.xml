@@ -1,0 +1,31 @@
+<component name="libraryTable">
+  <library name="spigot-1.7.2-R0.4-SNAPSHOT-1339">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.8-R0.1-SNAPSHOT-latest.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.9-R0.1-SNAPSHOT-latest.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.10-R0.1-SNAPSHOT-latest.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.11.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.12.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.13.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.14.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.16.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.7.2-R0.4-SNAPSHOT-1339.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.8-R0.1-SNAPSHOT-latest.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.9-R0.1-SNAPSHOT-latest.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.10-R0.1-SNAPSHOT-latest.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.11.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.12.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.13.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.14.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.16.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.7.2-R0.4-SNAPSHOT-1339.jar!/" />
+    </SOURCES>
+  </library>
+</component>

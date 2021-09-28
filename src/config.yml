@@ -1,0 +1,18 @@
+# Plugin Config
+UpdateChecker: true
+Prefix: "&2[Example]&f"
+
+# Default block message if the command does not have a custom block message.
+globalblockmessage: "&4Error: &fThis command is disabled, Sorry!"
+
+# Blocked Command List
+commands:
+  version:
+    allowed-worlds:
+      - world
+    blockmessage: "&4Error: &fThis command is disabled, Sorry!"
+
+  bukkit:
+    allowed-worlds:
+      - world
+    blockmessage: "&4Error: &fThis command is disabled, Sorry!"
