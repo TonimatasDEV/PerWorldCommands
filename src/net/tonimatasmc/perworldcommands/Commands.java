@@ -16,7 +16,7 @@ public class Commands implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, org.bukkit.command.Command cmd, String label, String[] args) {
         if (sender.hasPermission("perworldcommands.cmd") || sender.hasPermission("pwc.cmd")) {
-            /*if (args[0].equalsIgnoreCase("set")) {
+            if (args[0].equalsIgnoreCase("set")) {
                 if (args[1].equalsIgnoreCase("command") || args[1].equalsIgnoreCase("cmd")) {
                     List<Boolean> worldList = new ArrayList<>();
                     worldList.add(args.length <= 3);
@@ -36,18 +36,19 @@ public class Commands implements CommandExecutor {
 
             if (args[0].equalsIgnoreCase("remove") || args[1].equalsIgnoreCase("delete") || args[1].equalsIgnoreCase("del")) {
                 if (args[1].equalsIgnoreCase("command") || args[1].equalsIgnoreCase("cmd")) {
-                    this.plugin.getConfig().set("commands." + args[3] + ".allowed-worlds", "");
+                    this.plugin.getConfig().set("commands." + args[3], "");
                     this.plugin.saveConfig();
                     this.plugin.reloadConfig();
+                    sender.sendMessage(this.plugin.getMessages().getString("&2[Success]: &fThe command" + args[3] + " has been removed.").replace('&', '§'));
                 }
 
                 if (args[1].equalsIgnoreCase("message") || args[1].equalsIgnoreCase("msg")) {
-                    this.plugin.getConfig().set("commands." + args[2] + ".blockmessage", "");
+                    this.plugin.getConfig().set("commands." + args[2] + ".blockmessage", false);
                     this.plugin.saveConfig();
                     this.plugin.reloadConfig();
-                    //sender.sendMessage(this.plugin.getMessages().getString("").replace('&', '§'));
+                    sender.sendMessage(this.plugin.getMessages().getString("&2[Success]: &fThe blocked message " + args[2] + " has been removed.").replace('&', '§'));
                 }
-            }*/
+            }
 
             if (args[0].equalsIgnoreCase("reload")) {
                 this.plugin.reloadConfig();
