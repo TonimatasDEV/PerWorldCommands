@@ -1,6 +1,7 @@
 package net.tonimatasmc.perworldcommands.commands;
 
 import net.tonimatasmc.perworldcommands.PerWorldCommands;
+import net.tonimatasmc.perworldcommands.manager.CommandManager;
 import net.tonimatasmc.perworldcommands.manager.ConfigManager;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -18,23 +19,29 @@ public class Commands implements CommandExecutor {
                 if (args[1].equalsIgnoreCase("command") || args[1].equalsIgnoreCase("cmd")) {
                     List<String> worldList = new ArrayList<>();
                     worldList.add(args[3]);
-                    worldList.add(args[4]);
-                    worldList.add(args[5]);
-                    worldList.add(args[6]);
-                    worldList.add(args[7]);
-                    worldList.add(args[8]);
-                    worldList.add(args[9]);
-                    worldList.add(args[10]);
-                    worldList.add(args[11]);
-                    worldList.add(args[12]);
-                    worldList.add(args[13]);
-                    worldList.add(args[14]);
-                    worldList.add(args[15]);
-                    worldList.add(args[16]);
-                    worldList.add(args[17]);
-                    worldList.add(args[18]);
-                    worldList.add(args[19]);
-                    worldList.add(args[20]);
+
+                    //if (args[4].equalsIgnoreCase(String.valueOf(Bukkit.getWorlds()))) {
+                    //    worldList.add(args[4]);
+                    //}
+
+                    CommandManager.argsConstructor(args,4, worldList);
+                    CommandManager.argsConstructor(args,5, worldList);
+                    CommandManager.argsConstructor(args,6, worldList);
+                    CommandManager.argsConstructor(args,7, worldList);
+                    CommandManager.argsConstructor(args,8, worldList);
+                    CommandManager.argsConstructor(args,9, worldList);
+                    CommandManager.argsConstructor(args,10, worldList);
+                    CommandManager.argsConstructor(args,11, worldList);
+                    CommandManager.argsConstructor(args,12, worldList);
+                    CommandManager.argsConstructor(args,13, worldList);
+                    CommandManager.argsConstructor(args,14, worldList);
+                    CommandManager.argsConstructor(args,15, worldList);
+                    CommandManager.argsConstructor(args,16, worldList);
+                    CommandManager.argsConstructor(args,17, worldList);
+                    CommandManager.argsConstructor(args,18, worldList);
+                    CommandManager.argsConstructor(args,19, worldList);
+                    CommandManager.argsConstructor(args,20, worldList);
+
                     PerWorldCommands.getPlugin().getConfig().set("commands." + args[2] + ".allowed-worlds", worldList);
                     PerWorldCommands.getPlugin().getConfig().set("commands." + args[2] + ".blockmessage", "This command is disabled");
                     PerWorldCommands.getPlugin().saveConfig();
