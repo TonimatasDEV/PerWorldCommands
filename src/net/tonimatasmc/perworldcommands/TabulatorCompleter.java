@@ -43,12 +43,6 @@ public class TabulatorCompleter implements org.bukkit.command.TabCompleter {
                 argList.add("cmd");
                 return argList;
             }
-
-            if (args.length == 3) {
-                argList.add("enable");
-                argList.add("disable");
-                return argList;
-            }return argList;
         }return null;
     }
 }
