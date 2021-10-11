@@ -1,4 +1,4 @@
-package net.tonimatasmc.perworldcommands;
+package net.tonimatasmc.perworldcommands.metrics;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -24,9 +24,7 @@ import java.util.stream.Collectors;
 import java.util.zip.GZIPOutputStream;
 
 public class Metrics {
-
     private final Plugin plugin;
-
     private final MetricsBase metricsBase;
 
     public Metrics(JavaPlugin plugin, int serviceId) {
@@ -34,25 +32,19 @@ public class Metrics {
         File bStatsFolder = new File(plugin.getDataFolder().getParentFile(), "bStats");
         File configFile = new File(bStatsFolder, "config.yml");
         YamlConfiguration config = YamlConfiguration.loadConfiguration(configFile);
+
         if (!config.isSet("serverUuid")) {
             config.addDefault("enabled", true);
             config.addDefault("serverUuid", UUID.randomUUID().toString());
             config.addDefault("logFailedRequests", false);
             config.addDefault("logSentData", false);
             config.addDefault("logResponseStatusText", false);
+            config.options().header("bStats (https://bStats.org) collects some basic information for plugin authors, like how\n" + "many people use their plugin and their total player count. It's recommended to keep bStats\n" + "enabled, but if you're not comfortable with this, you can turn this setting off. There is no\n" + "performance penalty associated with having metrics enabled, and data sent to bStats is fully\n" + "anonymous.").copyDefaults(true);
 
-            config
-                    .options()
-                    .header(
-                            "bStats (https://bStats.org) collects some basic information for plugin authors, like how\n"
-                                    + "many people use their plugin and their total player count. It's recommended to keep bStats\n"
-                                    + "enabled, but if you're not comfortable with this, you can turn this setting off. There is no\n"
-                                    + "performance penalty associated with having metrics enabled, and data sent to bStats is fully\n"
-                                    + "anonymous.")
-                    .copyDefaults(true);
             try {
                 config.save(configFile);
             } catch (IOException ignored) {
+
             }
         }
 
@@ -61,21 +53,7 @@ public class Metrics {
         boolean logErrors = config.getBoolean("logFailedRequests", false);
         boolean logSentData = config.getBoolean("logSentData", false);
         boolean logResponseStatusText = config.getBoolean("logResponseStatusText", false);
-        metricsBase =
-                new MetricsBase(
-                        "bukkit",
-                        serverUUID,
-                        serviceId,
-                        enabled,
-                        this::appendPlatformData,
-                        this::appendServiceData,
-                        submitDataTask -> Bukkit.getScheduler().runTask(plugin, submitDataTask),
-                        plugin::isEnabled,
-                        (message, error) -> this.plugin.getLogger().log(Level.WARNING, message, error),
-                        (message) -> this.plugin.getLogger().log(Level.INFO, message),
-                        logErrors,
-                        logSentData,
-                        logResponseStatusText);
+        metricsBase = new MetricsBase("bukkit", serverUUID, serviceId, enabled, this::appendPlatformData, this::appendServiceData, submitDataTask -> Bukkit.getScheduler().runTask(plugin, submitDataTask), plugin::isEnabled, (message, error) -> this.plugin.getLogger().log(Level.WARNING, message, error), (message) -> this.plugin.getLogger().log(Level.INFO, message), logErrors, logSentData, logResponseStatusText);
     }
 
     public void addCustomChart(CustomChart chart) {
@@ -101,9 +79,7 @@ public class Metrics {
     private int getPlayerAmount() {
         try {
             Method onlinePlayersMethod = Class.forName("org.bukkit.Server").getMethod("getOnlinePlayers");
-            return onlinePlayersMethod.getReturnType().equals(Collection.class)
-                    ? ((Collection<?>) onlinePlayersMethod.invoke(Bukkit.getServer())).size()
-                    : ((Player[]) onlinePlayersMethod.invoke(Bukkit.getServer())).length;
+            return onlinePlayersMethod.getReturnType().equals(Collection.class) ? ((Collection<?>) onlinePlayersMethod.invoke(Bukkit.getServer())).size() : ((Player[]) onlinePlayersMethod.invoke(Bukkit.getServer())).length;
         } catch (Exception e) {
             return (int) Arrays.stream(new Collection[]{Bukkit.getOnlinePlayers()}).count();
         }
@@ -111,54 +87,24 @@ public class Metrics {
 
     public static class MetricsBase {
         public static final String METRICS_VERSION = "2.2.1";
-
-        private static final ScheduledExecutorService scheduler =
-                Executors.newScheduledThreadPool(1, task -> new Thread(task, "bStats-Metrics"));
-
+        private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1, task -> new Thread(task, "bStats-Metrics"));
         private static final String REPORT_URL = "https://bStats.org/api/v2/data/%s";
-
         private final String platform;
-
         private final String serverUuid;
-
         private final int serviceId;
-
         private final Consumer<JsonObjectBuilder> appendPlatformDataConsumer;
-
         private final Consumer<JsonObjectBuilder> appendServiceDataConsumer;
-
         private final Consumer<Runnable> submitTaskConsumer;
-
         private final Supplier<Boolean> checkServiceEnabledSupplier;
-
         private final BiConsumer<String, Throwable> errorLogger;
-
         private final Consumer<String> infoLogger;
-
         private final boolean logErrors;
-
         private final boolean logSentData;
-
         private final boolean logResponseStatusText;
-
         private final Set<CustomChart> customCharts = new HashSet<>();
-
         private final boolean enabled;
 
-        public MetricsBase(
-                String platform,
-                String serverUuid,
-                int serviceId,
-                boolean enabled,
-                Consumer<JsonObjectBuilder> appendPlatformDataConsumer,
-                Consumer<JsonObjectBuilder> appendServiceDataConsumer,
-                Consumer<Runnable> submitTaskConsumer,
-                Supplier<Boolean> checkServiceEnabledSupplier,
-                BiConsumer<String, Throwable> errorLogger,
-                Consumer<String> infoLogger,
-                boolean logErrors,
-                boolean logSentData,
-                boolean logResponseStatusText) {
+        public MetricsBase(String platform, String serverUuid, int serviceId, boolean enabled, Consumer<JsonObjectBuilder> appendPlatformDataConsumer, Consumer<JsonObjectBuilder> appendServiceDataConsumer, Consumer<Runnable> submitTaskConsumer, Supplier<Boolean> checkServiceEnabledSupplier, BiConsumer<String, Throwable> errorLogger, Consumer<String> infoLogger, boolean logErrors, boolean logSentData, boolean logResponseStatusText) {
             this.platform = platform;
             this.serverUuid = serverUuid;
             this.serviceId = serviceId;
@@ -173,6 +119,7 @@ public class Metrics {
             this.logSentData = logSentData;
             this.logResponseStatusText = logResponseStatusText;
             checkRelocation();
+
             if (enabled) {
                 startSubmitting();
             }
@@ -186,21 +133,22 @@ public class Metrics {
             final Runnable submitTask =
                     () -> {
                         if (!enabled || !checkServiceEnabledSupplier.get()) {
-                            // Submitting data or service is disabled
                             scheduler.shutdown();
                             return;
                         }
+
                         if (submitTaskConsumer != null) {
                             submitTaskConsumer.accept(this::submitData);
                         } else {
                             this.submitData();
                         }
                     };
+
             long initialDelay = (long) (1000 * 60 * (3 + Math.random() * 3));
             long secondDelay = (long) (1000 * 60 * (Math.random() * 30));
+
             scheduler.schedule(submitTask, initialDelay, TimeUnit.MILLISECONDS);
-            scheduler.scheduleAtFixedRate(
-                    submitTask, initialDelay + secondDelay, 1000 * 60 * 30, TimeUnit.MILLISECONDS);
+            scheduler.scheduleAtFixedRate(submitTask, initialDelay + secondDelay, 1000 * 60 * 30, TimeUnit.MILLISECONDS);
         }
 
         private void submitData() {
@@ -208,11 +156,7 @@ public class Metrics {
             appendPlatformDataConsumer.accept(baseJsonBuilder);
             final JsonObjectBuilder serviceJsonBuilder = new JsonObjectBuilder();
             appendServiceDataConsumer.accept(serviceJsonBuilder);
-            JsonObjectBuilder.JsonObject[] chartData =
-                    customCharts.stream()
-                            .map(customChart -> customChart.getRequestJsonObject(errorLogger, logErrors))
-                            .filter(Objects::nonNull)
-                            .toArray(JsonObjectBuilder.JsonObject[]::new);
+            JsonObjectBuilder.JsonObject[] chartData = customCharts.stream().map(customChart -> customChart.getRequestJsonObject(errorLogger, logErrors)).filter(Objects::nonNull).toArray(JsonObjectBuilder.JsonObject[]::new);
             serviceJsonBuilder.appendField("id", serviceId);
             serviceJsonBuilder.appendField("customCharts", chartData);
             baseJsonBuilder.appendField("service", serviceJsonBuilder.build());
@@ -235,9 +179,11 @@ public class Metrics {
             if (logSentData) {
                 infoLogger.accept("Sent bStats metrics data: " + data.toString());
             }
+
             String url = String.format(REPORT_URL, platform);
             HttpsURLConnection connection = (HttpsURLConnection) new URL(url).openConnection();
             byte[] compressedData = compress(data.toString());
+
             connection.setRequestMethod("POST");
             connection.addRequestProperty("Accept", "application/json");
             connection.addRequestProperty("Connection", "close");
@@ -246,31 +192,32 @@ public class Metrics {
             connection.setRequestProperty("Content-Type", "application/json");
             connection.setRequestProperty("User-Agent", "Metrics-Service/1");
             connection.setDoOutput(true);
+
             try (DataOutputStream outputStream = new DataOutputStream(connection.getOutputStream())) {
                 outputStream.write(compressedData);
             }
+
             StringBuilder builder = new StringBuilder();
-            try (BufferedReader bufferedReader =
-                         new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
+
+            try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
                 String line;
+
                 while ((line = bufferedReader.readLine()) != null) {
                     builder.append(line);
                 }
             }
+
             if (logResponseStatusText) {
                 infoLogger.accept("Sent data to bStats and received response: " + builder);
             }
         }
 
         private void checkRelocation() {
-            if (System.getProperty("bstats.relocatecheck") == null
-                    || !System.getProperty("bstats.relocatecheck").equals("false")) {
-                final String defaultPackage =
-                        new String(new byte[]{'o', 'r', 'g', '.', 'b', 's', 't', 'a', 't', 's'});
-                final String examplePackage =
-                        new String(new byte[]{'y', 'o', 'u', 'r', '.', 'p', 'a', 'c', 'k', 'a', 'g', 'e'});
-                if (MetricsBase.class.getPackage().getName().startsWith(defaultPackage)
-                        || MetricsBase.class.getPackage().getName().startsWith(examplePackage)) {
+            if (System.getProperty("bstats.relocatecheck") == null || !System.getProperty("bstats.relocatecheck").equals("false")) {
+                final String defaultPackage = new String(new byte[]{'o', 'r', 'g', '.', 'b', 's', 't', 'a', 't', 's'});
+                final String examplePackage = new String(new byte[]{'y', 'o', 'u', 'r', '.', 'p', 'a', 'c', 'k', 'a', 'g', 'e'});
+
+                if (MetricsBase.class.getPackage().getName().startsWith(defaultPackage) || MetricsBase.class.getPackage().getName().startsWith(examplePackage)) {
                     throw new IllegalStateException("bStats Metrics class has not been relocated correctly!");
                 }
             }
@@ -280,49 +227,43 @@ public class Metrics {
             if (str == null) {
                 return null;
             }
+
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             try (GZIPOutputStream gzip = new GZIPOutputStream(outputStream)) {
                 gzip.write(str.getBytes(StandardCharsets.UTF_8));
-            }
-            return outputStream.toByteArray();
+            }return outputStream.toByteArray();
         }
     }
 
     public abstract static class CustomChart {
-
         private final String chartId;
 
         protected CustomChart(String chartId) {
             if (chartId == null) {
                 throw new IllegalArgumentException("chartId must not be null");
-            }
-            this.chartId = chartId;
+            }this.chartId = chartId;
         }
 
-        public JsonObjectBuilder.JsonObject getRequestJsonObject(
-                BiConsumer<String, Throwable> errorLogger, boolean logErrors) {
+        public JsonObjectBuilder.JsonObject getRequestJsonObject(BiConsumer<String, Throwable> errorLogger, boolean logErrors) {
             JsonObjectBuilder builder = new JsonObjectBuilder();
             builder.appendField("chartId", chartId);
+
             try {
                 JsonObjectBuilder.JsonObject data = getChartData();
                 if (data == null) {
                     return null;
                 }
+
                 builder.appendField("data", data);
             } catch (Throwable t) {
                 if (logErrors) {
                     errorLogger.accept("Failed to get data for custom chart with id " + chartId, t);
-                }
-                return null;
-            }
-            return builder.build();
-        }
-
-        protected abstract JsonObjectBuilder.JsonObject getChartData() throws Exception;
+                }return null;
+            }return builder.build();
+        }protected abstract JsonObjectBuilder.JsonObject getChartData() throws Exception;
     }
 
     public static class SimplePie extends CustomChart {
-
         private final Callable<String> callable;
 
         public SimplePie(String chartId, Callable<String> callable) {
@@ -334,13 +275,12 @@ public class Metrics {
         protected JsonObjectBuilder.JsonObject getChartData() throws Exception {
             String value = callable.call();
             if (value == null || value.isEmpty()) {
-                // Null = skip the chart
                 return null;
-            }
-            return new JsonObjectBuilder().appendField("value", value).build();
+            }return new JsonObjectBuilder().appendField("value", value).build();
         }
     }
 
+    @SuppressWarnings("UnusedReturnValue")
     public static class JsonObjectBuilder {
 
         private StringBuilder builder = new StringBuilder();
@@ -355,6 +295,7 @@ public class Metrics {
             if (value == null) {
                 throw new IllegalArgumentException("JSON value must not be null");
             }
+
             appendFieldUnescaped(key, "\"" + escape(value) + "\"");
             return this;
         }
@@ -368,6 +309,7 @@ public class Metrics {
             if (object == null) {
                 throw new IllegalArgumentException("JSON object must not be null");
             }
+
             appendFieldUnescaped(key, object.toString());
             return this;
         }
@@ -376,8 +318,8 @@ public class Metrics {
             if (values == null) {
                 throw new IllegalArgumentException("JSON values must not be null");
             }
-            String escapedValues =
-                    Arrays.stream(values).map(JsonObject::toString).collect(Collectors.joining(","));
+
+            String escapedValues = Arrays.stream(values).map(JsonObject::toString).collect(Collectors.joining(","));
             appendFieldUnescaped(key, "[" + escapedValues + "]");
             return this;
         }
@@ -386,12 +328,15 @@ public class Metrics {
             if (builder == null) {
                 throw new IllegalStateException("JSON has already been built");
             }
+
             if (key == null) {
                 throw new IllegalArgumentException("JSON key must not be null");
             }
+
             if (hasAtLeastOneField) {
                 builder.append(",");
             }
+
             builder.append("\"").append(escape(key)).append("\":").append(escapedValue);
             hasAtLeastOneField = true;
         }
@@ -400,6 +345,7 @@ public class Metrics {
             if (builder == null) {
                 throw new IllegalStateException("JSON has already been built");
             }
+
             JsonObject object = new JsonObject(builder.append("}").toString());
             builder = null;
             return object;
@@ -407,8 +353,10 @@ public class Metrics {
 
         private static String escape(String value) {
             final StringBuilder builder = new StringBuilder();
+
             for (int i = 0; i < value.length(); i++) {
                 char c = value.charAt(i);
+
                 if (c == '"') {
                     builder.append("\\\"");
                 } else if (c == '\\') {
@@ -420,12 +368,10 @@ public class Metrics {
                 } else {
                     builder.append(c);
                 }
-            }
-            return builder.toString();
+            }return builder.toString();
         }
 
         public static class JsonObject {
-
             private final String value;
 
             private JsonObject(String value) {
