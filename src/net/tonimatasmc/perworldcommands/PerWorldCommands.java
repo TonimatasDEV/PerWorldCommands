@@ -29,10 +29,10 @@ public class PerWorldCommands extends JavaPlugin implements Listener {
 
         Bukkit.getPluginManager().registerEvents(new BlockedCommandEvent(this), this);
 
-        this.getCommand("perworldcommands").setExecutor(new Commands(this));
-        this.getCommand("pwc").setExecutor(new Commands(this));
-        this.getCommand("perworldcommands").setTabCompleter(new TabulatorCompleter());
-        this.getCommand("pwc").setTabCompleter(new TabulatorCompleter());
+        //this.getCommand("perworldcommands").setExecutor(new Commands(this));
+        //this.getCommand("pwc").setExecutor(new Commands(this));
+        //this.getCommand("perworldcommands").setTabCompleter(new TabulatorCompleter());
+        //this.getCommand("pwc").setTabCompleter(new TabulatorCompleter());
 
         int pluginId = 12875;
         Metrics metrics = new Metrics(this, pluginId);
