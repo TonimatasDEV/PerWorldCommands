@@ -1,5 +1,7 @@
 package net.tonimatasmc.perworldcommands.utils;
 
+import org.bukkit.Bukkit;
+import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -43,6 +45,13 @@ public class TabulatorCompleter implements org.bukkit.command.TabCompleter {
                 argList.add("cmd");
                 return argList;
             }
+
+            if (args.length <= 3 && (args[0].equals("set")) && (args[1].equals("command")) || (args[1].equals("cmd"))) {
+                for (World world : Bukkit.getWorlds()) {
+                    argList.add(world.getName());
+                }return argList;
+            }
+
         }return null;
     }
 }
