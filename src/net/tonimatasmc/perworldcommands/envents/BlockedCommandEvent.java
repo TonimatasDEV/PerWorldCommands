@@ -1,4 +1,4 @@
-package net.tonimatasmc.perworldcommands;
+package net.tonimatasmc.perworldcommands.envents;
 
 import net.tonimatasmc.perworldcommands.manager.CommandManager;
 import org.bukkit.event.EventHandler;
