@@ -13,17 +13,17 @@ public class RegisterManager {
         ConfigManager.registerMessages();
         MessageManager.registerMessage();
 
-        PerWorldCommands.plugin.saveDefaultConfig();
+        PerWorldCommands.getPlugin().saveDefaultConfig();
 
-        Bukkit.getPluginManager().registerEvents(new BlockedCommandEvent(), PerWorldCommands.plugin);
+        Bukkit.getPluginManager().registerEvents(new BlockedCommandEvent(), PerWorldCommands.getPlugin());
 
-        PerWorldCommands.plugin.getCommand("perworldcommands").setExecutor(new Commands());
-        PerWorldCommands.plugin.getCommand("pwc").setExecutor(new Commands());
-        PerWorldCommands.plugin.getCommand("perworldcommands").setTabCompleter(new TabulatorCompleter());
-        PerWorldCommands.plugin.getCommand("pwc").setTabCompleter(new TabulatorCompleter());
+        PerWorldCommands.getPlugin().getCommand("perworldcommands").setExecutor(new Commands());
+        PerWorldCommands.getPlugin().getCommand("pwc").setExecutor(new Commands());
+        PerWorldCommands.getPlugin().getCommand("perworldcommands").setTabCompleter(new TabulatorCompleter());
+        PerWorldCommands.getPlugin().getCommand("pwc").setTabCompleter(new TabulatorCompleter());
 
         int pluginId = 12875;
-        Metrics metrics = new Metrics(PerWorldCommands.plugin, pluginId);
+        Metrics metrics = new Metrics(PerWorldCommands.getPlugin(), pluginId);
         metrics.addCustomChart(new Metrics.SimplePie("", () -> ""));
 
         //if (PerWorldCommands.plugin.getConfig().getString("UpdateChecker").equalsIgnoreCase("true")) {
