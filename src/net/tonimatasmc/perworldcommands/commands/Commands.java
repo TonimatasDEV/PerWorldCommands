@@ -1,5 +1,6 @@
-package net.tonimatasmc.perworldcommands;
+package net.tonimatasmc.perworldcommands.commands;
 
+import net.tonimatasmc.perworldcommands.PerWorldCommands;
 import net.tonimatasmc.perworldcommands.manager.ConfigManager;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
