@@ -4,6 +4,8 @@ import net.tonimatasmc.perworldcommands.PerWorldCommands;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
+import java.util.List;
+
 public class CommandManager {
     public static boolean constructor(String message, Player player) {
         if (PerWorldCommands.getPlugin().getConfig().getConfigurationSection("commands." + message.toLowerCase()) != null) {
@@ -21,6 +23,12 @@ public class CommandManager {
             }
         } else {
             return false;
+        }
+    }
+
+    public static void argsConstructor(String[] args, int number, List<String> worldList) {
+        if (!(args[number] == null)) {
+            worldList.add(args[number]);
         }
     }
 }
