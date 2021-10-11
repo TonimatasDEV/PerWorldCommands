@@ -46,7 +46,7 @@ public class TabulatorCompleter implements org.bukkit.command.TabCompleter {
                 return argList;
             }
 
-            if (args.length <= 3 && (args[0].equals("set")) && (args[1].equals("command")) || (args[1].equals("cmd"))) {
+            if (args.length <= 4 && (args[0].equals("set")) && (args[1].equals("command")) || (args[1].equals("cmd"))) {
                 for (World world : Bukkit.getWorlds()) {
                     argList.add(world.getName());
                 }return argList;
