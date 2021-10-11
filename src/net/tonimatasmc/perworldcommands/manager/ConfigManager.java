@@ -15,27 +15,26 @@ public class ConfigManager {
     public static File messagesFile = null;
 
     public static FileConfiguration getMessages() {
-        if (messages == null) {
-            reloadMessages();
+        if (ConfigManager.messages == null) {
+            ConfigManager.reloadMessages();
         }
-
         return ConfigManager.messages;
     }
 
     public static void reloadMessages() {
         if (ConfigManager.messages == null) {
-            messagesFile = new File(PerWorldCommands.plugin.getDataFolder(), "messages.yml");
+            ConfigManager.messagesFile = new File(PerWorldCommands.getPlugin().getDataFolder(), "messages.yml");
         }
 
-        messages = YamlConfiguration.loadConfiguration(messagesFile);
-        Reader defConfigStream = new InputStreamReader(PerWorldCommands.plugin.getResource("messages.yml"), StandardCharsets.UTF_8);
+        ConfigManager.messages = YamlConfiguration.loadConfiguration(ConfigManager.messagesFile);
+        Reader defConfigStream = new InputStreamReader(PerWorldCommands.getPlugin().getResource("messages.yml"), StandardCharsets.UTF_8);
         YamlConfiguration defConfig = YamlConfiguration.loadConfiguration(defConfigStream);
-        messages.setDefaults(defConfig);
+        ConfigManager.messages.setDefaults(defConfig);
     }
 
     public static void saveMessages() {
         try {
-            messages.save(messagesFile);
+            ConfigManager.messages.save(ConfigManager.messagesFile);
         } catch (IOException var2) {
             var2.printStackTrace();
         }
@@ -43,10 +42,11 @@ public class ConfigManager {
     }
 
     public static void registerMessages() {
-        messagesFile = new File(PerWorldCommands.plugin.getDataFolder(), "messages.yml");
-        if (!messagesFile.exists()) {
-            getMessages().options().copyDefaults(true);
-            saveMessages();
+        ConfigManager.messagesFile = new File(PerWorldCommands.getPlugin().getDataFolder(), "messages.yml");
+        if (!ConfigManager.messagesFile.exists()) {
+            ConfigManager.getMessages().options().copyDefaults(true);
+            ConfigManager.saveMessages();
         }
+
     }
 }
