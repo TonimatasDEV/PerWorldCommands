@@ -1,6 +1,5 @@
 package net.tonimatasmc.perworldcommands;
 
-import net.tonimatasmc.perworldcommands.manager.ConfigManager;
 import net.tonimatasmc.perworldcommands.manager.RegisterManager;
 import net.tonimatasmc.perworldcommands.manager.UnregisterManager;
 import org.bukkit.event.Listener;
