@@ -30,23 +30,23 @@ public class TabulatorCompleter implements org.bukkit.command.TabCompleter {
                 return argList.stream().filter(a -> a.startsWith(args[0])).collect(Collectors.toList());
             }
 
-            if (args.length == 2 && args[0].equals("remove") || args[0].equals("delete") || args[0].equals("del")) {
-                argList.add("message");
+            if (args.length == 2 && args[0].equals("remove")) {
                 argList.add("msg");
-                argList.add("command");
                 argList.add("cmd");
                 return argList;
             }
 
             if (args.length == 2 && (args[0].equals("set"))) {
-                argList.add("message");
                 argList.add("msg");
-                argList.add("command");
                 argList.add("cmd");
                 return argList;
             }
 
-            if (args.length <= 4 && (args[0].equals("set")) && (args[1].equals("command")) || (args[1].equals("cmd"))) {
+            if ((args.length == 3) && (args[0].equals("set")) && (args[1].equals("cmd"))) {
+                argList.add(String.valueOf(Bukkit.getCommandAliases()));
+            }
+
+            if ((args.length <= 4) && (args[0].equals("set")) && (args[1].equals("cmd"))) {
                 for (World world : Bukkit.getWorlds()) {
                     argList.add(world.getName());
                 }return argList;
