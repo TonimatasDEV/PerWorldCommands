@@ -72,16 +72,8 @@ public class Commands implements CommandExecutor {
                     }
 
                     PerWorldCommands.getPlugin().getConfig().set("commands." + args[2] + ".allowed-worlds", worldList);
-                    PerWorldCommands.getPlugin().getConfig().set("commands." + args[2] + ".blockmessage", "This command is disabled");
                     PerWorldCommands.getPlugin().saveConfig();
                     PerWorldCommands.getPlugin().reloadConfig();
-                }
-
-                if (args[1].equalsIgnoreCase("message") || args[1].equalsIgnoreCase("msg")) {
-                    PerWorldCommands.getPlugin().getConfig().set("commands." + args[2] + ".blockmessage", "\"" + (args.length <= 3) + "\"");
-                    PerWorldCommands.getPlugin().saveConfig();
-                    PerWorldCommands.getPlugin().reloadConfig();
-                    sender.sendMessage(ConfigManager.getMessages().getString("").replace('&', '§'));
                 }
             }
 
@@ -91,13 +83,6 @@ public class Commands implements CommandExecutor {
                     PerWorldCommands.getPlugin().saveConfig();
                     PerWorldCommands.getPlugin().reloadConfig();
                     sender.sendMessage(ConfigManager.getMessages().getString("&2[Success]: &fThe command" + args[3] + " has been removed.").replace('&', '§'));
-                }
-
-                if (args[1].equalsIgnoreCase("message") || args[1].equalsIgnoreCase("msg")) {
-                    PerWorldCommands.getPlugin().getConfig().set("commands." + args[2] + ".blockmessage", false);
-                    PerWorldCommands.getPlugin().saveConfig();
-                    PerWorldCommands.getPlugin().reloadConfig();
-                    sender.sendMessage(ConfigManager.getMessages().getString("&2[Success]: &fThe blocked message " + args[2] + " has been removed.").replace('&', '§'));
                 }
             }
 
