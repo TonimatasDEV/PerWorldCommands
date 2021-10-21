@@ -7,7 +7,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,22 +31,21 @@ public class TabulatorCompleter implements org.bukkit.command.TabCompleter {
             }
 
             if (args.length == 2 && args[0].equals("remove")) {
-                argList.add("msg");
                 argList.add("cmd");
                 return argList;
             }
 
             if (args.length == 2 && (args[0].equals("set"))) {
-                argList.add("msg");
+                //argList.add("msg");
                 argList.add("cmd");
                 return argList;
             }
 
-            if ((args.length == 3) && (args[0].equals("set")) && (args[1].equals("cmd"))) {
-                argList.add(String.valueOf(Bukkit.getPluginCommand(Arrays.toString(Bukkit.getPluginManager().getPlugins()))));
+            if ((args.length == 3) && (args[1].equals("cmd"))) {
+                argList.add("example");
             }
 
-            if (args.length <= 4 && (args[0].equals("set")) && (args[1].equals("cmd") && args[2] != null)) {
+            if (args.length <= 4 && (args[0].equals("set")) && args[1].equals("cmd") && !args[2].isEmpty()) {
                 for (World world : Bukkit.getWorlds()) {
                     argList.add(world.getName());
                 }return argList;
