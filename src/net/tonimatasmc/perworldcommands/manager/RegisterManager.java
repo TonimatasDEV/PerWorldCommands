@@ -1,6 +1,6 @@
 package net.tonimatasmc.perworldcommands.manager;
 
-import net.tonimatasmc.perworldcommands.*;
+import net.tonimatasmc.perworldcommands.PerWorldCommands;
 import net.tonimatasmc.perworldcommands.commands.Commands;
 import net.tonimatasmc.perworldcommands.envents.BlockedCommandEvent;
 import net.tonimatasmc.perworldcommands.metrics.Metrics;
