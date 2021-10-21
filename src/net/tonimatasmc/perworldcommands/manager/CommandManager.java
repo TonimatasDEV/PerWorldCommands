@@ -9,10 +9,6 @@ public class CommandManager {
         if (PerWorldCommands.getPlugin().getConfig().getConfigurationSection("commands." + message.toLowerCase()) != null) {
             String msg = PerWorldCommands.getPlugin().getConfig().getString("globalblockmessage");
 
-            if (PerWorldCommands.getPlugin().getConfig().getString("commands." + message + ".blockmessage") != null) {
-                msg = PerWorldCommands.getPlugin().getConfig().getString("commands." + message + ".blockmessage");
-            }
-
             if (PerWorldCommands.getPlugin().getConfig().getStringList("commands." + message + ".allowed-worlds").contains(player.getWorld().getName().toLowerCase())) {
                 return false;
             } else {
