@@ -7,12 +7,3 @@ globalblockmessage: "&4Error: &fThis command is disabled, Sorry!"
 
 # Blocked Command List
 commands:
-  version:
-    allowed-worlds:
-      - world
-    blockmessage: "&4Error: &fThis command is disabled, Sorry!"
-
-  bukkit:
-    allowed-worlds:
-      - world
-    blockmessage: "&4Error: &fThis command is disabled, Sorry!"
