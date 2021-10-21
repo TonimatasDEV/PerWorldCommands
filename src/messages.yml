@@ -1,1 +1,4 @@
-MessageAplicated: "&2[Successful] &fThe message has been applied to command:"
+MessageApplicated: "&2[Successfully]: &fThe message has been applied to command: %message%"
+RemoveCommand: "&2[Successfully]: &fThe command %command% has been removed."
+ReloadPlugin: "&2[Successfully]: &fThe plugin has been reloaded"
+AddCommand: "&2[Successfully]: &fThe command %command% has been added."
