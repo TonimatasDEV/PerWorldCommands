@@ -8,7 +8,7 @@ import org.bukkit.command.CommandSender;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings({"CommentedOutCode", "ConstantConditions"})
+@SuppressWarnings({"ConstantConditions"})
 public class Commands implements CommandExecutor {
 
     @Override
@@ -74,23 +74,31 @@ public class Commands implements CommandExecutor {
                     PerWorldCommands.getPlugin().getConfig().set("commands." + args[2] + ".allowed-worlds", worldList);
                     PerWorldCommands.getPlugin().saveConfig();
                     PerWorldCommands.getPlugin().reloadConfig();
+                    sender.sendMessage(ConfigManager.getMessages().getString("AddCommand").replace('&', '§').replace("%command%", args[2]));
+                }
+
+                if (args[1].equalsIgnoreCase("msg")) {
+                    PerWorldCommands.getPlugin().getConfig().set("globalblockmessage", "\"" + (args.length <= 2) + "\"");
+                    PerWorldCommands.getPlugin().saveConfig();
+                    PerWorldCommands.getPlugin().reloadConfig();
+                    sender.sendMessage(ConfigManager.getMessages().getString("MessageApplicated").replace('&', '§').replace("%message%","\"" + (args.length <= 2) + "\""));
                 }
             }
 
             if (args[0].equalsIgnoreCase("remove")) {
-                if (args[1].equalsIgnoreCase("command") || args[1].equalsIgnoreCase("cmd")) {
-                    PerWorldCommands.getPlugin().getConfig().set("commands." + args[3], "");
+                if (args[1].equalsIgnoreCase("cmd")) {
+                    PerWorldCommands.getPlugin().getConfig().set("commands." + args[2], null);
                     PerWorldCommands.getPlugin().saveConfig();
                     PerWorldCommands.getPlugin().reloadConfig();
-                    sender.sendMessage(ConfigManager.getMessages().getString("&2[Success]: &fThe command" + args[3] + " has been removed.").replace('&', '§'));
+                    sender.sendMessage(ConfigManager.getMessages().getString("RemoveCommand").replace('&', '§').replace("%command%", args[2]));
                 }
             }
 
             if (args[0].equalsIgnoreCase("reload")) {
                 PerWorldCommands.getPlugin().reloadConfig();
                 ConfigManager.reloadMessages();
+                sender.sendMessage(ConfigManager.getMessages().getString("ReloadPlugin").replace('&', '§'));
             }
-
         }return true;
     }
 }
