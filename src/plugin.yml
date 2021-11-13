@@ -1,9 +1,10 @@
 name: PerWorldCommands
-version: 1.0.0
+version: 1.0.1
 author: TonimatasMC
 prefix: PerWorldCommands
 description: PerWorldCommands
 website: https://tonimatasmc.com
+api-version: 1.13
 
 main: net.tonimatasmc.perworldcommands.PerWorldCommands
 
@@ -12,3 +13,8 @@ commands:
     description: Primary command.
   perworldcommands:
     description: Primary command.
+
+permissions:
+  pwc.cmd:
+    description: PerWorldCommands primary permission.
+    default: false
