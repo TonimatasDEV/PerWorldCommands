@@ -29,8 +29,10 @@ public class Metrics {
 
     public Metrics(JavaPlugin plugin, int serviceId) {
         this.plugin = plugin;
+
         File bStatsFolder = new File(plugin.getDataFolder().getParentFile(), "bStats");
         File configFile = new File(bStatsFolder, "config.yml");
+
         YamlConfiguration config = YamlConfiguration.loadConfiguration(configFile);
 
         if (!config.isSet("serverUuid")) {
@@ -49,7 +51,9 @@ public class Metrics {
         }
 
         boolean enabled = config.getBoolean("enabled", true);
+
         String serverUUID = config.getString("serverUuid");
+
         boolean logErrors = config.getBoolean("logFailedRequests", false);
         boolean logSentData = config.getBoolean("logSentData", false);
         boolean logResponseStatusText = config.getBoolean("logResponseStatusText", false);
@@ -79,6 +83,7 @@ public class Metrics {
     private int getPlayerAmount() {
         try {
             Method onlinePlayersMethod = Class.forName("org.bukkit.Server").getMethod("getOnlinePlayers");
+
             return onlinePlayersMethod.getReturnType().equals(Collection.class) ? ((Collection<?>) onlinePlayersMethod.invoke(Bukkit.getServer())).size() : ((Player[]) onlinePlayersMethod.invoke(Bukkit.getServer())).length;
         } catch (Exception e) {
             return (int) Arrays.stream(new Collection[]{Bukkit.getOnlinePlayers()}).count();
@@ -118,6 +123,7 @@ public class Metrics {
             this.logErrors = logErrors;
             this.logSentData = logSentData;
             this.logResponseStatusText = logResponseStatusText;
+
             checkRelocation();
 
             if (enabled) {
@@ -130,19 +136,18 @@ public class Metrics {
         }
 
         private void startSubmitting() {
-            final Runnable submitTask =
-                    () -> {
-                        if (!enabled || !checkServiceEnabledSupplier.get()) {
-                            scheduler.shutdown();
-                            return;
-                        }
+            final Runnable submitTask = () -> {
+                if (!enabled || !checkServiceEnabledSupplier.get()) {
+                    scheduler.shutdown();
+                    return;
+                }
 
-                        if (submitTaskConsumer != null) {
-                            submitTaskConsumer.accept(this::submitData);
-                        } else {
-                            this.submitData();
-                        }
-                    };
+                if (submitTaskConsumer != null) {
+                    submitTaskConsumer.accept(this::submitData);
+                } else {
+                    this.submitData();
+                }
+            };
 
             long initialDelay = (long) (1000 * 60 * (3 + Math.random() * 3));
             long secondDelay = (long) (1000 * 60 * (Math.random() * 30));
@@ -153,8 +158,11 @@ public class Metrics {
 
         private void submitData() {
             final JsonObjectBuilder baseJsonBuilder = new JsonObjectBuilder();
+
             appendPlatformDataConsumer.accept(baseJsonBuilder);
+
             final JsonObjectBuilder serviceJsonBuilder = new JsonObjectBuilder();
+
             appendServiceDataConsumer.accept(serviceJsonBuilder);
             JsonObjectBuilder.JsonObject[] chartData = customCharts.stream().map(customChart -> customChart.getRequestJsonObject(errorLogger, logErrors)).filter(Objects::nonNull).toArray(JsonObjectBuilder.JsonObject[]::new);
             serviceJsonBuilder.appendField("id", serviceId);
@@ -163,16 +171,16 @@ public class Metrics {
             baseJsonBuilder.appendField("serverUUID", serverUuid);
             baseJsonBuilder.appendField("metricsVersion", METRICS_VERSION);
             JsonObjectBuilder.JsonObject data = baseJsonBuilder.build();
-            scheduler.execute(
-                    () -> {
-                        try {
-                            sendData(data);
-                        } catch (Exception e) {
-                            if (logErrors) {
-                                errorLogger.accept("Could not submit bStats metrics data", e);
-                            }
-                        }
-                    });
+
+            scheduler.execute(() -> {
+                try {
+                    sendData(data);
+                } catch (Exception e) {
+                    if (logErrors) {
+                        errorLogger.accept("Could not submit bStats metrics data", e);
+                    }
+                }
+            });
         }
 
         private void sendData(JsonObjectBuilder.JsonObject data) throws Exception {
@@ -182,6 +190,7 @@ public class Metrics {
 
             String url = String.format(REPORT_URL, platform);
             HttpsURLConnection connection = (HttpsURLConnection) new URL(url).openConnection();
+
             byte[] compressedData = compress(data.toString());
 
             connection.setRequestMethod("POST");
@@ -229,6 +238,7 @@ public class Metrics {
             }
 
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+
             try (GZIPOutputStream gzip = new GZIPOutputStream(outputStream)) {
                 gzip.write(str.getBytes(StandardCharsets.UTF_8));
             }return outputStream.toByteArray();
@@ -274,6 +284,7 @@ public class Metrics {
         @Override
         protected JsonObjectBuilder.JsonObject getChartData() throws Exception {
             String value = callable.call();
+
             if (value == null || value.isEmpty()) {
                 return null;
             }return new JsonObjectBuilder().appendField("value", value).build();
