@@ -17,8 +17,7 @@ public class ConfigManager {
     public static FileConfiguration getMessages() {
         if (ConfigManager.messages == null) {
             ConfigManager.reloadMessages();
-        }
-        return ConfigManager.messages;
+        }return ConfigManager.messages;
     }
 
     public static void reloadMessages() {
@@ -27,7 +26,9 @@ public class ConfigManager {
         }
 
         ConfigManager.messages = YamlConfiguration.loadConfiguration(ConfigManager.messagesFile);
+
         Reader defConfigStream = new InputStreamReader(PerWorldCommands.getPlugin().getResource("messages.yml"), StandardCharsets.UTF_8);
+
         YamlConfiguration defConfig = YamlConfiguration.loadConfiguration(defConfigStream);
         ConfigManager.messages.setDefaults(defConfig);
     }
@@ -38,15 +39,14 @@ public class ConfigManager {
         } catch (IOException var2) {
             var2.printStackTrace();
         }
-
     }
 
     public static void registerMessages() {
         ConfigManager.messagesFile = new File(PerWorldCommands.getPlugin().getDataFolder(), "messages.yml");
+
         if (!ConfigManager.messagesFile.exists()) {
             ConfigManager.getMessages().options().copyDefaults(true);
             ConfigManager.saveMessages();
         }
-
     }
 }
