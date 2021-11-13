@@ -4,12 +4,15 @@ import net.tonimatasmc.perworldcommands.PerWorldCommands;
 import net.tonimatasmc.perworldcommands.commands.Commands;
 import net.tonimatasmc.perworldcommands.envents.BlockedCommandEvent;
 import net.tonimatasmc.perworldcommands.metrics.Metrics;
+import net.tonimatasmc.perworldcommands.utils.PluginDescription;
 import net.tonimatasmc.perworldcommands.utils.TabulatorCompleter;
+import net.tonimatasmc.perworldcommands.utils.UpdateChecker;
 import org.bukkit.Bukkit;
 
-@SuppressWarnings("CommentedOutCode")
 public class RegisterManager {
     public static void register() {
+        PluginDescription.description();
+
         ConfigManager.registerMessages();
         MessageManager.registerMessage();
 
@@ -26,8 +29,8 @@ public class RegisterManager {
         Metrics metrics = new Metrics(PerWorldCommands.getPlugin(), pluginId);
         metrics.addCustomChart(new Metrics.SimplePie("", () -> ""));
 
-        //if (PerWorldCommands.plugin.getConfig().getString("UpdateChecker").equalsIgnoreCase("true")) {
-        //    UpdateChecker.check();
-        //}
+        if (PerWorldCommands.getPlugin().getConfig().getString("UpdateChecker").equalsIgnoreCase("true")) {
+            UpdateChecker.check();
+        }
     }
 }
