@@ -25,6 +25,7 @@ public class TabulatorCompleter implements org.bukkit.command.TabCompleter {
     public List<String> onTabComplete(CommandSender sender, Command cmd, String alias, String[] args) {
         if (cmd.getName().equalsIgnoreCase("perworldcommands") || cmd.getName().equalsIgnoreCase("pwc")) {
             List<String> argList = new ArrayList<>();
+
             if (args.length == 1 && hasPermission(sender)) {
                 argList.add("remove");
                 argList.add("set");
