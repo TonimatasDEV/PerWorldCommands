@@ -17,40 +17,57 @@ public class Commands implements CommandExecutor {
             if (args[0].equalsIgnoreCase("set")) {
                 if (args[1].equalsIgnoreCase("cmd")) {
                     List<String> worldList = new ArrayList<>();
+
                     worldList.add(args[3]);
 
                     if (args.length <= 3) {
                         worldList.add(args[4]);
+
                         if (args.length <= 4) {
                             worldList.add(args[5]);
+
                             if (args.length <= 5) {
                                 worldList.add(args[6]);
+
                                 if (args.length <= 6) {
                                     worldList.add(args[7]);
+
                                     if (args.length <= 7) {
                                         worldList.add(args[8]);
+
                                         if (args.length <= 8) {
                                             worldList.add(args[9]);
+
                                             if (args.length <= 9) {
                                                 worldList.add(args[10]);
+
                                                 if (args.length <= 10) {
                                                     worldList.add(args[11]);
+
                                                     if (args.length <= 11) {
                                                         worldList.add(args[12]);
+
                                                         if (args.length <= 12) {
                                                             worldList.add(args[13]);
+
                                                             if (args.length <= 13) {
                                                                 worldList.add(args[14]);
+
                                                                 if (args.length <= 14) {
                                                                     worldList.add(args[15]);
+
                                                                     if (args.length <= 15) {
                                                                         worldList.add(args[16]);
+
                                                                         if (args.length <= 16) {
                                                                             worldList.add(args[17]);
+
                                                                             if (args.length <= 17) {
                                                                                 worldList.add(args[18]);
+
                                                                                 if (args.length <= 18) {
                                                                                     worldList.add(args[19]);
+
                                                                                     if (args.length <= 19) {
                                                                                         worldList.add(args[20]);
                                                                                     }
