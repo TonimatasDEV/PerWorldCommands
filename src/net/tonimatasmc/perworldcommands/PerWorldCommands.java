@@ -7,13 +7,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class PerWorldCommands extends JavaPlugin implements Listener {
     private static PerWorldCommands plugin;
-    public String version;
-    public String prefix;
 
     @Override
     public void onEnable() {
-        this.version = this.getDescription().getVersion();
-        this.prefix = this.getDescription().getPrefix();
         plugin = this;
         RegisterManager.register();
     }
