@@ -1,13 +1,6 @@
-Tested Minecraft Versions:
-1.71.81.91.101.111.121.131.141.151.161.17
-Source Code:
-https://github.com/TonimatasMCDEV/PerWorldCommands
-Contributors:
-TonimatasMC
-Languages Supported:
-English
-Donation Link:
-https://paypal.me/tonimatasmc
+Tested Minecraft Versions: 1.7 - 1.8 - 1.9 - 1.10 - 1.11 - 1.12 - 1.13 - 1.14 - 1.15 - 1.16 - 1.17
+Contributors: TonimatasMC
+Donation Link: https://paypal.me/tonimatasmc
 Description.png
 With this plugin you can put commands by worlds. Example: / plugins you put that it is only available in the world "world_nether", that command will only be executed in that world.
 
