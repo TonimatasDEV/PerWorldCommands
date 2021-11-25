@@ -1,0 +1,33 @@
+Tested Minecraft Versions:
+1.71.81.91.101.111.121.131.141.151.161.17
+Source Code:
+https://github.com/TonimatasMCDEV/PerWorldCommands
+Contributors:
+TonimatasMC
+Languages Supported:
+English
+Donation Link:
+https://paypal.me/tonimatasmc
+Description.png
+With this plugin you can put commands by worlds. Example: / plugins you put that it is only available in the world "world_nether", that command will only be executed in that world.
+
+Features.png
+- Version compatibility: 1.7-1.17
+- Easy to use/configure.
+-None error
+- All the commands of all Minecraft plugins work. Even mods (If you use Magma / Mohist ...)
+
+Commands.png
+/pwc set cmd <example> <world> <world1> <world2>
+/pwc remove cmd <example>
+
+/perworldcommands set cmd <example> <world> <world1> <world2>
+/perworldcommands remove cmd <example>
+
+
+Permissions.png
+perworldcommands.cmd
+pwc.cmd
+
+Pictures.png
+
