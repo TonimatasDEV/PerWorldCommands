@@ -9,6 +9,8 @@ import net.tonimatasmc.perworldcommands.utils.TabulatorCompleter;
 import net.tonimatasmc.perworldcommands.utils.UpdateChecker;
 import org.bukkit.Bukkit;
 
+import java.util.Objects;
+
 public class RegisterManager {
     public static void register() {
         PluginDescription.description();
@@ -20,16 +22,17 @@ public class RegisterManager {
 
         Bukkit.getPluginManager().registerEvents(new BlockedCommandEvent(), PerWorldCommands.getPlugin());
 
-        PerWorldCommands.getPlugin().getCommand("perworldcommands").setExecutor(new Commands());
-        PerWorldCommands.getPlugin().getCommand("pwc").setExecutor(new Commands());
-        PerWorldCommands.getPlugin().getCommand("perworldcommands").setTabCompleter(new TabulatorCompleter());
-        PerWorldCommands.getPlugin().getCommand("pwc").setTabCompleter(new TabulatorCompleter());
+        Objects.requireNonNull(PerWorldCommands.getPlugin().getCommand("perworldcommands")).setExecutor(new Commands());
+        Objects.requireNonNull(PerWorldCommands.getPlugin().getCommand("pwc")).setExecutor(new Commands());
+        Objects.requireNonNull(PerWorldCommands.getPlugin().getCommand("perworldcommands")).setTabCompleter(new TabulatorCompleter());
+        Objects.requireNonNull(PerWorldCommands.getPlugin().getCommand("pwc")).setTabCompleter(new TabulatorCompleter());
 
         int pluginId = 12875;
+
         Metrics metrics = new Metrics(PerWorldCommands.getPlugin(), pluginId);
         metrics.addCustomChart(new Metrics.SimplePie("", () -> ""));
 
-        if (PerWorldCommands.getPlugin().getConfig().getString("UpdateChecker").equalsIgnoreCase("true")) {
+        if (Objects.requireNonNull(PerWorldCommands.getPlugin().getConfig().getString("UpdateChecker")).equalsIgnoreCase("true")) {
             UpdateChecker.check();
         }
     }
