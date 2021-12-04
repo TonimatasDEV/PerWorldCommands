@@ -1,0 +1,84 @@
+<component name="libraryTable">
+  <library name="spigot-1.14.4">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.14.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.8.4-R0.1-SNAPSHOT-latest.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.14.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.8.3-R0.1-SNAPSHOT-latest.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.12.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.12.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.15.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.9.2-R0.1-SNAPSHOT-latest.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.8.7-R0.1-SNAPSHOT-latest.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.15.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.11.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.13.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.16.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.13.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.16.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.8.5-R0.1-SNAPSHOT-latest.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.10-R0.1-SNAPSHOT-latest.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.10.2-R0.1-SNAPSHOT-latest.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.12.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.16.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.9.4-R0.1-SNAPSHOT-latest.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.8.6-R0.1-SNAPSHOT-latest.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.16.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.11.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.14.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.14.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.13.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.14.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.9-R0.1-SNAPSHOT-latest.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.8.8-R0.1-SNAPSHOT-latest.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.8-R0.1-SNAPSHOT-latest.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.11.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.7.10-SNAPSHOT-b1657.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.17.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.16.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.18.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.14.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.8.4-R0.1-SNAPSHOT-latest.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.14.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.8.3-R0.1-SNAPSHOT-latest.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.12.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.12.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.15.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.9.2-R0.1-SNAPSHOT-latest.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.8.7-R0.1-SNAPSHOT-latest.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.15.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.11.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.13.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.16.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.13.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.16.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.8.5-R0.1-SNAPSHOT-latest.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.10-R0.1-SNAPSHOT-latest.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.10.2-R0.1-SNAPSHOT-latest.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.12.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.16.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.9.4-R0.1-SNAPSHOT-latest.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.8.6-R0.1-SNAPSHOT-latest.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.16.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.11.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.14.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.14.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.13.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.14.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.9-R0.1-SNAPSHOT-latest.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.8.8-R0.1-SNAPSHOT-latest.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.8-R0.1-SNAPSHOT-latest.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.11.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.7.10-SNAPSHOT-b1657.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.17.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.16.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../.Librerias/Spigot/spigot-1.17.jar!/" />
+    </SOURCES>
+  </library>
+</component>
