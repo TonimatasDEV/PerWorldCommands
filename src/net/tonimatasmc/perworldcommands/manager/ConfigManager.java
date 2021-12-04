@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
+import java.util.Objects;
 
 public class ConfigManager {
     public static FileConfiguration messages = null;
@@ -27,7 +28,7 @@ public class ConfigManager {
 
         ConfigManager.messages = YamlConfiguration.loadConfiguration(ConfigManager.messagesFile);
 
-        Reader defConfigStream = new InputStreamReader(PerWorldCommands.getPlugin().getResource("messages.yml"), StandardCharsets.UTF_8);
+        Reader defConfigStream = new InputStreamReader(Objects.requireNonNull(PerWorldCommands.getPlugin().getResource("messages.yml")), StandardCharsets.UTF_8);
 
         YamlConfiguration defConfig = YamlConfiguration.loadConfiguration(defConfigStream);
         ConfigManager.messages.setDefaults(defConfig);
