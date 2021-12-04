@@ -8,7 +8,7 @@ import org.bukkit.command.CommandSender;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings({"ConstantConditions"})
+@SuppressWarnings({"ConstantConditions", "NullableProblems"})
 public class Commands implements CommandExecutor {
 
     @Override
@@ -17,7 +17,6 @@ public class Commands implements CommandExecutor {
             if (args[0].equalsIgnoreCase("set")) {
                 if (args[1].equalsIgnoreCase("cmd")) {
                     List<String> worldList = new ArrayList<>();
-
                     worldList.add(args[3]);
 
                     if (args.length <= 3) {
