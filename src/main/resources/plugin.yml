@@ -16,4 +16,6 @@ commands:
 permissions:
   pwc.cmd:
     description: PerWorldCommands primary permission.
-    default: false
+
+  perworldcommands.cmd:
+    description: PerWorldCommands primary permission.
