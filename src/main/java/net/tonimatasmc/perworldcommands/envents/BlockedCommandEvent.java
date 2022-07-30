@@ -9,7 +9,7 @@ public class BlockedCommandEvent implements Listener {
 
     @EventHandler
     public void PerWorldCommand(PlayerCommandPreprocessEvent event) {
-        if (CommandManager.constructor(event.getMessage().substring(1), event.getPlayer())) {
+        if (CommandManager.constructor(event.getMessage().split(" ")[0].replace("/", ""), event.getPlayer())) {
             event.setCancelled(true);
         }
 

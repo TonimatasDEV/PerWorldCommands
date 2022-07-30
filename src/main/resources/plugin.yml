@@ -3,7 +3,6 @@ version: 1.0.3
 author: TonimatasMC
 prefix: PerWorldCommands
 description: PerWorldCommands
-website: https://tonimatasmc.com
 api-version: 1.13
 
 main: net.tonimatasmc.perworldcommands.PerWorldCommands

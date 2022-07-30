@@ -1,8 +1,9 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="PerWorldCommands">
-    <output-path>$PROJECT_DIR$/../../../.Export</output-path>
+    <output-path>$PROJECT_DIR$/libs</output-path>
     <root id="archive" name="PerWorldCommands.jar">
-      <element id="module-output" name="PerWorldCommands" />
+      <element id="dir-copy" path="$PROJECT_DIR$/src/main/resources" />
+      <element id="module-output" name="net.tonimatasmc.PerWorldCommands.main" />
     </root>
   </artifact>
 </component>
