@@ -13,7 +13,7 @@ import java.util.Objects;
 
 public class RegisterManager {
     public static void register() {
-        PluginDescription.description();
+        PluginDescription.register();
 
         ConfigManager.registerMessages();
         MessageManager.registerMessage();
@@ -27,11 +27,18 @@ public class RegisterManager {
         Objects.requireNonNull(PerWorldCommands.getPlugin().getCommand("perworldcommands")).setTabCompleter(new TabulatorCompleter());
         Objects.requireNonNull(PerWorldCommands.getPlugin().getCommand("pwc")).setTabCompleter(new TabulatorCompleter());
 
+        metrics();
+        updateChecker();
+    }
+
+    public static void metrics() {
         int pluginId = 12875;
 
         Metrics metrics = new Metrics(PerWorldCommands.getPlugin(), pluginId);
         metrics.addCustomChart(new Metrics.SimplePie("", () -> ""));
+    }
 
+    public static void updateChecker() {
         if (Objects.requireNonNull(PerWorldCommands.getPlugin().getConfig().getString("UpdateChecker")).equalsIgnoreCase("true")) {
             UpdateChecker.check();
         }

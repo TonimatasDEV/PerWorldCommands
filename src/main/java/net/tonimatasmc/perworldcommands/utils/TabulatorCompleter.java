@@ -38,8 +38,13 @@ public class TabulatorCompleter implements org.bukkit.command.TabCompleter {
             }
 
             if (args.length == 2 && (args[0].equalsIgnoreCase("set"))) {
-                //argList.add("msg");
+                argList.add("msg");
                 argList.add("cmd");
+                return argList;
+            }
+
+            if (args.length == 3 && args[1].equalsIgnoreCase("msg")) {
+                argList.add("\"\"");
                 return argList;
             }
 

@@ -22,12 +22,12 @@ public class UpdateChecker {
 
             latestversion = (new BufferedReader(new InputStreamReader(con.getInputStream()))).readLine();
 
-            if (latestversion.length() <= 7 && !PluginDescription.version.equals(latestversion)) {
-                Bukkit.getConsoleSender().sendMessage(PluginDescription.prefix + ChatColor.RED + " There is a new version available. " + ChatColor.YELLOW + "(" + ChatColor.GRAY + latestversion + ChatColor.YELLOW + ")");
-                Bukkit.getConsoleSender().sendMessage(PluginDescription.prefix + ChatColor.RED + " You can download it at: " + ChatColor.WHITE + "https://www.spigotmc.org/resources/perworldcommands.97003/");
+            if (latestversion.length() <= 7 && !PluginDescription.getVersion().equals(latestversion)) {
+                Bukkit.getConsoleSender().sendMessage(PluginDescription.getPrefix() + ChatColor.RED + " There is a new version available. " + ChatColor.YELLOW + "(" + ChatColor.GRAY + latestversion + ChatColor.YELLOW + ")");
+                Bukkit.getConsoleSender().sendMessage(PluginDescription.getPrefix() + ChatColor.RED + " You can download it at: " + ChatColor.WHITE + "https://www.spigotmc.org/resources/perworldcommands.97003/");
             }
         } catch (Exception var3) {
-            Bukkit.getConsoleSender().sendMessage(PluginDescription.prefix + ChatColor.RED + " Error while checking update.");
+            Bukkit.getConsoleSender().sendMessage(PluginDescription.getPrefix() + ChatColor.RED + " Error while checking update.");
         }
     }
 }
