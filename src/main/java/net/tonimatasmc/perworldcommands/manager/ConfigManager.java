@@ -18,7 +18,8 @@ public class ConfigManager {
     public static FileConfiguration getMessages() {
         if (ConfigManager.messages == null) {
             ConfigManager.reloadMessages();
-        }return ConfigManager.messages;
+        }
+        return ConfigManager.messages;
     }
 
     public static void reloadMessages() {

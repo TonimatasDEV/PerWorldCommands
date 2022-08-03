@@ -56,28 +56,30 @@ public class TabulatorCompleter implements org.bukkit.command.TabCompleter {
             if (args.length == 4 && args[0].equalsIgnoreCase("set") && args[1].equalsIgnoreCase("cmd") && !args[2].isEmpty()) {
                 for (World world : Bukkit.getWorlds()) {
                     argList.add(world.getName());
-                }return argList;
+                }
+                return argList;
             }
 
-            ArgManager.constructor(args,5, argList);
-            ArgManager.constructor(args,6, argList);
-            ArgManager.constructor(args,7, argList);
-            ArgManager.constructor(args,8, argList);
-            ArgManager.constructor(args,9, argList);
-            ArgManager.constructor(args,10, argList);
-            ArgManager.constructor(args,11, argList);
-            ArgManager.constructor(args,12, argList);
-            ArgManager.constructor(args,13, argList);
-            ArgManager.constructor(args,14, argList);
-            ArgManager.constructor(args,15, argList);
-            ArgManager.constructor(args,16, argList);
-            ArgManager.constructor(args,17, argList);
-            ArgManager.constructor(args,18, argList);
-            ArgManager.constructor(args,19, argList);
-            ArgManager.constructor(args,20, argList);
+            ArgManager.constructor(args, 5, argList);
+            ArgManager.constructor(args, 6, argList);
+            ArgManager.constructor(args, 7, argList);
+            ArgManager.constructor(args, 8, argList);
+            ArgManager.constructor(args, 9, argList);
+            ArgManager.constructor(args, 10, argList);
+            ArgManager.constructor(args, 11, argList);
+            ArgManager.constructor(args, 12, argList);
+            ArgManager.constructor(args, 13, argList);
+            ArgManager.constructor(args, 14, argList);
+            ArgManager.constructor(args, 15, argList);
+            ArgManager.constructor(args, 16, argList);
+            ArgManager.constructor(args, 17, argList);
+            ArgManager.constructor(args, 18, argList);
+            ArgManager.constructor(args, 19, argList);
+            ArgManager.constructor(args, 20, argList);
             return argList;
 
 
-        }return null;
+        }
+        return null;
     }
 }

@@ -41,7 +41,12 @@ public class Metrics {
             config.addDefault("logFailedRequests", false);
             config.addDefault("logSentData", false);
             config.addDefault("logResponseStatusText", false);
-            config.options().header("bStats (https://bStats.org) collects some basic information for plugin authors, like how\n" + "many people use their plugin and their total player count. It's recommended to keep bStats\n" + "enabled, but if you're not comfortable with this, you can turn this setting off. There is no\n" + "performance penalty associated with having metrics enabled, and data sent to bStats is fully\n" + "anonymous.").copyDefaults(true);
+            config.options().header("""
+                    bStats (https://bStats.org) collects some basic information for plugin authors, like how
+                    many people use their plugin and their total player count. It's recommended to keep bStats
+                    enabled, but if you're not comfortable with this, you can turn this setting off. There is no
+                    performance penalty associated with having metrics enabled, and data sent to bStats is fully
+                    anonymous.""").copyDefaults(true);
 
             try {
                 config.save(configFile);
@@ -242,7 +247,8 @@ public class Metrics {
 
             try (GZIPOutputStream gzip = new GZIPOutputStream(outputStream)) {
                 gzip.write(str.getBytes(StandardCharsets.UTF_8));
-            }return outputStream.toByteArray();
+            }
+            return outputStream.toByteArray();
         }
     }
 
@@ -252,7 +258,8 @@ public class Metrics {
         protected CustomChart(String chartId) {
             if (chartId == null) {
                 throw new IllegalArgumentException("chartId must not be null");
-            }this.chartId = chartId;
+            }
+            this.chartId = chartId;
         }
 
         public JsonObjectBuilder.JsonObject getRequestJsonObject(BiConsumer<String, Throwable> errorLogger, boolean logErrors) {
@@ -270,9 +277,13 @@ public class Metrics {
             } catch (Throwable t) {
                 if (logErrors) {
                     errorLogger.accept("Failed to get data for custom chart with id " + chartId, t);
-                }return null;
-            }return builder.build();
-        }protected abstract JsonObjectBuilder.JsonObject getChartData() throws Exception;
+                }
+                return null;
+            }
+            return builder.build();
+        }
+
+        protected abstract JsonObjectBuilder.JsonObject getChartData() throws Exception;
     }
 
     public static class SimplePie extends CustomChart {
@@ -289,7 +300,8 @@ public class Metrics {
 
             if (value == null || value.isEmpty()) {
                 return null;
-            }return new JsonObjectBuilder().appendField("value", value).build();
+            }
+            return new JsonObjectBuilder().appendField("value", value).build();
         }
     }
 
@@ -381,7 +393,8 @@ public class Metrics {
                 } else {
                     builder.append(c);
                 }
-            }return builder.toString();
+            }
+            return builder.toString();
         }
 
         public static class JsonObject {

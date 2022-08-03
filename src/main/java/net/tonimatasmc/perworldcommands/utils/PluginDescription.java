@@ -1,7 +1,6 @@
 package net.tonimatasmc.perworldcommands.utils;
 
 import net.tonimatasmc.perworldcommands.PerWorldCommands;
-import org.bukkit.ChatColor;
 import org.bukkit.permissions.Permission;
 import org.bukkit.permissions.PermissionDefault;
 import org.bukkit.plugin.PluginDescriptionFile;
