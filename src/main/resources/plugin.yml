@@ -1,5 +1,5 @@
 name: PerWorldCommands
-version: 1.0.6
+version: 1.0.7
 author: TonimatasMC
 prefix: PerWorldCommands
 description: PerWorldCommands
@@ -19,3 +19,9 @@ permissions:
 
   perworldcommands.cmd:
     description: PerWorldCommands primary permission.
+
+  perworldcommands.bypass:
+    description: PerWorldCommands bypass.
+
+  pwc.bypass:
+    description: PerWorldCommands bypass.

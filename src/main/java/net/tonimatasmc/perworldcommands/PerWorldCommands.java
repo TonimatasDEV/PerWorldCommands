@@ -8,6 +8,10 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class PerWorldCommands extends JavaPlugin implements Listener {
     private static PerWorldCommands plugin;
 
+    public static PerWorldCommands getPlugin() {
+        return plugin;
+    }
+
     @Override
     public void onEnable() {
         plugin = this;
@@ -17,9 +21,5 @@ public class PerWorldCommands extends JavaPlugin implements Listener {
     @Override
     public void onDisable() {
         UnregisterManager.unregister();
-    }
-
-    public static PerWorldCommands getPlugin() {
-        return plugin;
     }
 }

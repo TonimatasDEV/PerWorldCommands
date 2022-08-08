@@ -1,5 +1,6 @@
 package net.tonimatasmc.perworldcommands.envents;
 
+import net.tonimatasmc.perworldcommands.PerWorldCommands;
 import net.tonimatasmc.perworldcommands.manager.CommandManager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -9,10 +10,17 @@ public class BlockedCommandEvent implements Listener {
 
     @EventHandler
     public void PerWorldCommand(PlayerCommandPreprocessEvent event) {
-        if (CommandManager.constructor(event.getMessage().split(" ")[0].replace("/", ""), event.getPlayer())) {
-            event.setCancelled(true);
+        if (!event.getPlayer().hasPermission("pwc.bypass") || !event.getPlayer().hasPermission("perworldcommands.bypass")) {
+            if (PerWorldCommands.getPlugin().getConfig().getBoolean("isworldblacklist")) {
+                if (CommandManager.constructorIsBlacklist(event.getMessage().split(" ")[0].replace("/", ""), event.getPlayer())) {
+                    event.setCancelled(true);
+                }
+            } else {
+                if (CommandManager.constructorIsWhitelist(event.getMessage().split(" ")[0].replace("/", ""), event.getPlayer())) {
+                    event.setCancelled(true);
+                }
+            }
         }
-
     }
 }
 

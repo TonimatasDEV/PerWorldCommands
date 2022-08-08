@@ -2,8 +2,8 @@ plugins {
     id 'java'
 }
 
-group = 'net.tonimatasmc'
-version = '1.0.6'
+group = 'net.tonimatasmc.perworldcommands'
+version = '1.0.7'
 
 repositories {
     mavenCentral()
