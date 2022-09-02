@@ -8,3 +8,9 @@ isworldblacklist: false
 
 # Blocked Command List
 commands:
+  example:
+    allowed-worlds:
+      - world
+  example2:
+    allowed-worlds:
+      -world_nether
