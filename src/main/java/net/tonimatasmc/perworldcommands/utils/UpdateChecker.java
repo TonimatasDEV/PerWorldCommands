@@ -9,25 +9,24 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class UpdateChecker {
-    public static String latestversion;
 
     public static void check() {
         try {
-            HttpURLConnection con = (HttpURLConnection) (new URL("https://api.spigotmc.org/legacy/update.php?resource=97003")).openConnection();
+            HttpURLConnection httpURLConnection = (HttpURLConnection) new URL("https://api.spigotmc.org/legacy/update.php?resource=97003").openConnection();
 
-            int timed_out = 1250;
+            httpURLConnection.setConnectTimeout(1250);
+            httpURLConnection.setReadTimeout(1250);
 
-            con.setConnectTimeout(timed_out);
-            con.setReadTimeout(timed_out);
+            String latestVersion = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream())).readLine();
 
-            latestversion = (new BufferedReader(new InputStreamReader(con.getInputStream()))).readLine();
-
-            if (latestversion.length() <= 7 && !PluginDescription.getVersion().equals(latestversion)) {
-                Bukkit.getConsoleSender().sendMessage(PluginDescription.getPrefix() + ChatColor.RED + " There is a new version available. " + ChatColor.YELLOW + "(" + ChatColor.GRAY + latestversion + ChatColor.YELLOW + ")");
-                Bukkit.getConsoleSender().sendMessage(PluginDescription.getPrefix() + ChatColor.RED + " You can download it at: " + ChatColor.WHITE + "https://www.spigotmc.org/resources/perworldcommands.97003/");
+            if (latestVersion.length() <= 7 && !PluginDescription.getVersion().equals(latestVersion)) {
+                Bukkit.getConsoleSender().sendMessage(PluginDescription.getPrefix() + ChatColor.DARK_RED + " There is a new version available. " + ChatColor.YELLOW + "(" + ChatColor.GRAY + latestVersion + ChatColor.YELLOW + ")");
+                Bukkit.getConsoleSender().sendMessage(PluginDescription.getPrefix() + ChatColor.DARK_RED + " You can download it at: " + ChatColor.WHITE + "https://www.spigotmc.org/resources/perworldcommands.97003/");
             }
+
+            httpURLConnection.disconnect();
         } catch (Exception var3) {
-            Bukkit.getConsoleSender().sendMessage(PluginDescription.getPrefix() + ChatColor.RED + " Error while checking update.");
+            Bukkit.getConsoleSender().sendMessage(PluginDescription.getPrefix() + ChatColor.DARK_RED + " Error while checking update.");
         }
     }
 }

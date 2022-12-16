@@ -1,6 +1,5 @@
 package net.tonimatasmc.perworldcommands.utils;
 
-import net.tonimatasmc.perworldcommands.manager.ArgManager;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.command.Command;
@@ -49,6 +48,7 @@ public class TabulatorCompleter implements org.bukkit.command.TabCompleter {
             }
 
             if (args.length == 3 && args[1].equalsIgnoreCase("cmd")) {
+                //TODO: Pass example to all commands of the server.
                 argList.add("example");
                 return argList;
             }
@@ -60,22 +60,19 @@ public class TabulatorCompleter implements org.bukkit.command.TabCompleter {
                 return argList;
             }
 
-            ArgManager.constructor(args, 5, argList);
-            ArgManager.constructor(args, 6, argList);
-            ArgManager.constructor(args, 7, argList);
-            ArgManager.constructor(args, 8, argList);
-            ArgManager.constructor(args, 9, argList);
-            ArgManager.constructor(args, 10, argList);
-            ArgManager.constructor(args, 11, argList);
-            ArgManager.constructor(args, 12, argList);
-            ArgManager.constructor(args, 13, argList);
-            ArgManager.constructor(args, 14, argList);
-            ArgManager.constructor(args, 15, argList);
-            ArgManager.constructor(args, 16, argList);
-            ArgManager.constructor(args, 17, argList);
-            ArgManager.constructor(args, 18, argList);
-            ArgManager.constructor(args, 19, argList);
-            ArgManager.constructor(args, 20, argList);
+            int number = 5;
+
+            while (number <= 20) {
+                if (args.length == number && args[0].equalsIgnoreCase("set") && args[1].equalsIgnoreCase("cmd")) {
+                    for (World world : Bukkit.getWorlds()) {
+                        argList.add(world.getName());
+                    }
+                }
+
+                number++;
+            }
+
+
             return argList;
 
 
