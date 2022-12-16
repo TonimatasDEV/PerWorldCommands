@@ -1,6 +1,6 @@
-package net.tonimatasmc.perworldcommands.storage;
+package net.tonimatasdev.perworldcommands.storage;
 
-import net.tonimatasmc.perworldcommands.PerWorldCommands;
+import net.tonimatasdev.perworldcommands.PerWorldCommands;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 

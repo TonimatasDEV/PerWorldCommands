@@ -1,6 +1,6 @@
-package net.tonimatasmc.perworldcommands.utils;
+package net.tonimatasdev.perworldcommands.utils;
 
-import net.tonimatasmc.perworldcommands.PerWorldCommands;
+import net.tonimatasdev.perworldcommands.PerWorldCommands;
 import org.bukkit.permissions.Permission;
 import org.bukkit.permissions.PermissionDefault;
 import org.bukkit.plugin.PluginDescriptionFile;

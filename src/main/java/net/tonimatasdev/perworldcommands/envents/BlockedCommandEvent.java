@@ -1,6 +1,6 @@
-package net.tonimatasmc.perworldcommands.envents;
+package net.tonimatasdev.perworldcommands.envents;
 
-import net.tonimatasmc.perworldcommands.PerWorldCommands;
+import net.tonimatasdev.perworldcommands.PerWorldCommands;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

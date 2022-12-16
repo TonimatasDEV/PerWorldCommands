@@ -1,4 +1,4 @@
-package net.tonimatasmc.perworldcommands.utils;
+package net.tonimatasdev.perworldcommands.utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;

@@ -1,7 +1,7 @@
-package net.tonimatasmc.perworldcommands.commands;
+package net.tonimatasdev.perworldcommands.commands;
 
-import net.tonimatasmc.perworldcommands.PerWorldCommands;
-import net.tonimatasmc.perworldcommands.storage.Messages;
+import net.tonimatasdev.perworldcommands.PerWorldCommands;
+import net.tonimatasdev.perworldcommands.storage.Messages;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

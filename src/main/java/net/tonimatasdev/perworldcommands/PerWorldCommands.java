@@ -1,12 +1,12 @@
-package net.tonimatasmc.perworldcommands;
+package net.tonimatasdev.perworldcommands;
 
-import net.tonimatasmc.perworldcommands.commands.Commands;
-import net.tonimatasmc.perworldcommands.envents.BlockedCommandEvent;
-import net.tonimatasmc.perworldcommands.metrics.Metrics;
-import net.tonimatasmc.perworldcommands.storage.Messages;
-import net.tonimatasmc.perworldcommands.utils.PluginDescription;
-import net.tonimatasmc.perworldcommands.utils.TabulatorCompleter;
-import net.tonimatasmc.perworldcommands.utils.UpdateChecker;
+import net.tonimatasdev.perworldcommands.envents.BlockedCommandEvent;
+import net.tonimatasdev.perworldcommands.storage.Messages;
+import net.tonimatasdev.perworldcommands.utils.UpdateChecker;
+import net.tonimatasdev.perworldcommands.commands.Commands;
+import net.tonimatasdev.perworldcommands.metrics.Metrics;
+import net.tonimatasdev.perworldcommands.utils.PluginDescription;
+import net.tonimatasdev.perworldcommands.utils.TabulatorCompleter;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.event.Listener;
