@@ -5,7 +5,7 @@ prefix: PerWorldCommands
 description: PerWorldCommands
 api-version: 1.13
 
-main: net.tonimatasmc.perworldcommands.PerWorldCommands
+main: net.tonimatasdev.perworldcommands.PerWorldCommands
 
 commands:
   pwc:
