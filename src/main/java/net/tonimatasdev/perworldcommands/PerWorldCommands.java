@@ -1,6 +1,6 @@
 package net.tonimatasdev.perworldcommands;
 
-import net.tonimatasdev.perworldcommands.envents.BlockedCommandEvent;
+import net.tonimatasdev.perworldcommands.envents.CheckCommandEvent;
 import net.tonimatasdev.perworldcommands.storage.Messages;
 import net.tonimatasdev.perworldcommands.utils.UpdateChecker;
 import net.tonimatasdev.perworldcommands.commands.Commands;
@@ -29,7 +29,7 @@ public class PerWorldCommands extends JavaPlugin implements Listener {
         Messages.registerMessages();
         PerWorldCommands.getPlugin().saveDefaultConfig();
 
-        Bukkit.getPluginManager().registerEvents(new BlockedCommandEvent(), PerWorldCommands.getPlugin());
+        Bukkit.getPluginManager().registerEvents(new CheckCommandEvent(), PerWorldCommands.getPlugin());
 
         Objects.requireNonNull(PerWorldCommands.getPlugin().getCommand("perworldcommands")).setExecutor(new Commands());
         Objects.requireNonNull(PerWorldCommands.getPlugin().getCommand("pwc")).setExecutor(new Commands());
