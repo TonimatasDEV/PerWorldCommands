@@ -1,18 +1,16 @@
 package net.tonimatasdev.perworldcommands;
 
-import net.tonimatasdev.perworldcommands.envents.CheckCommandEvent;
-import net.tonimatasdev.perworldcommands.storage.Messages;
-import net.tonimatasdev.perworldcommands.utils.UpdateChecker;
 import net.tonimatasdev.perworldcommands.commands.Commands;
+import net.tonimatasdev.perworldcommands.envents.CheckCommandEvent;
 import net.tonimatasdev.perworldcommands.metrics.Metrics;
+import net.tonimatasdev.perworldcommands.storage.Messages;
 import net.tonimatasdev.perworldcommands.utils.PluginDescription;
 import net.tonimatasdev.perworldcommands.utils.TabulatorCompleter;
+import net.tonimatasdev.perworldcommands.utils.UpdateChecker;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.util.Objects;
 
 public class PerWorldCommands extends JavaPlugin implements Listener {
     private static PerWorldCommands plugin;
@@ -31,15 +29,15 @@ public class PerWorldCommands extends JavaPlugin implements Listener {
 
         Bukkit.getPluginManager().registerEvents(new CheckCommandEvent(), PerWorldCommands.getPlugin());
 
-        Objects.requireNonNull(PerWorldCommands.getPlugin().getCommand("perworldcommands")).setExecutor(new Commands());
-        Objects.requireNonNull(PerWorldCommands.getPlugin().getCommand("pwc")).setExecutor(new Commands());
-        Objects.requireNonNull(PerWorldCommands.getPlugin().getCommand("perworldcommands")).setTabCompleter(new TabulatorCompleter());
-        Objects.requireNonNull(PerWorldCommands.getPlugin().getCommand("pwc")).setTabCompleter(new TabulatorCompleter());
+        PerWorldCommands.getPlugin().getCommand("perworldcommands").setExecutor(new Commands());
+        PerWorldCommands.getPlugin().getCommand("pwc").setExecutor(new Commands());
+        PerWorldCommands.getPlugin().getCommand("perworldcommands").setTabCompleter(new TabulatorCompleter());
+        PerWorldCommands.getPlugin().getCommand("pwc").setTabCompleter(new TabulatorCompleter());
 
         Metrics metrics = new Metrics(PerWorldCommands.getPlugin(), 12875);
         metrics.addCustomChart(new Metrics.SimplePie("", () -> ""));
 
-        if (Objects.requireNonNull(PerWorldCommands.getPlugin().getConfig().getString("UpdateChecker")).equalsIgnoreCase("true")) {
+        if (PerWorldCommands.getPlugin().getConfig().getBoolean("UpdateChecker")) {
             UpdateChecker.check();
         }
 

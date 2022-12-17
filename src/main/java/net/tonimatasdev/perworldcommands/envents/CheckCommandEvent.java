@@ -16,20 +16,12 @@ public class CheckCommandEvent implements Listener {
 
         if (!event.getPlayer().hasPermission("pwc.bypass") || !event.getPlayer().hasPermission("perworldcommands.bypass")) {
             if (PerWorldCommands.getPlugin().getConfig().getConfigurationSection("commands." + message.toLowerCase()) != null) {
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', PerWorldCommands.getPlugin().getConfig().getString("Prefix") + " " + PerWorldCommands.getPlugin().getConfig().getString("globalblockmessage")));
+
                 if (PerWorldCommands.getPlugin().getConfig().getBoolean("isworldblacklist")) {
-                    if (!PerWorldCommands.getPlugin().getConfig().getStringList("commands." + message + ".allowed-worlds").contains(player.getWorld().getName().toLowerCase())) {
-                        event.setCancelled(false);
-                    } else {
-                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', PerWorldCommands.getPlugin().getConfig().getString("Prefix") + " " + PerWorldCommands.getPlugin().getConfig().getString("globalblockmessage")));
-                        event.setCancelled(true);
-                    }
+                    event.setCancelled(PerWorldCommands.getPlugin().getConfig().getStringList("commands." + message + ".allowed-worlds").contains(player.getWorld().getName().toLowerCase()));
                 } else {
-                    if (PerWorldCommands.getPlugin().getConfig().getStringList("commands." + message + ".allowed-worlds").contains(player.getWorld().getName().toLowerCase())) {
-                        event.setCancelled(false);
-                    } else {
-                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', PerWorldCommands.getPlugin().getConfig().getString("Prefix") + " " + PerWorldCommands.getPlugin().getConfig().getString("globalblockmessage")));
-                        event.setCancelled(true);
-                    }
+                    event.setCancelled(!PerWorldCommands.getPlugin().getConfig().getStringList("commands." + message + ".allowed-worlds").contains(player.getWorld().getName().toLowerCase()));
                 }
             }
         }
