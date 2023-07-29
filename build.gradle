@@ -3,14 +3,31 @@ plugins {
 }
 
 group = 'net.tonimatasmc.perworldcommands'
-version = "${project_version}"
+version = plugin_version
+
+base {
+    archivesName = "PerWorldCommands"
+}
 
 repositories {
     mavenCentral()
-
     maven { url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
 }
 
 dependencies {
-    compileOnly 'org.spigotmc:spigot-api:1.19.3-R0.1-SNAPSHOT'
+    compileOnly 'org.spigotmc:spigot-api:1.20.1-R0.1-SNAPSHOT'
+}
+
+
+processResources {
+    var replaceProperties = [version: plugin_version]
+    inputs.properties replaceProperties
+
+    filesMatching(['plugin.yml']) {
+        expand replaceProperties
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
 }
