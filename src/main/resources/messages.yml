@@ -1,5 +1,0 @@
-MessageApplicated: "&2[Successfully]: &fThe message has been applied to command: %message%"
-RemoveCommand: "&2[Successfully]: &fThe command %command% has been removed."
-ReloadPlugin: "&2[Successfully]: &fThe plugin has been reloaded"
-AddCommand: "&2[Successfully]: &fThe command %command% has been added."
-SyntaxError: "&4[Error]: &fSyntax error. Check the command is completed."

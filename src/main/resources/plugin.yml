@@ -1,27 +1,27 @@
+main: net.tonimatasdev.perworldcommands.PerWorldCommands
 name: PerWorldCommands
-version: 1.1.3
+version: ${plugin_version}
+load: POSTWORLD
+api-version: 1.13
+description: Set commands for certain worlds.
 author: TonimatasDEV
 prefix: PerWorldCommands
-description: PerWorldCommands
-api-version: 1.13
-
-main: net.tonimatasdev.perworldcommands.PerWorldCommands
 
 commands:
-  pwc:
-    description: Primary command.
   perworldcommands:
     description: Primary command.
+    aliases:
+      - pwc
 
 permissions:
-  pwc.cmd:
-    description: PerWorldCommands primary permission.
+  perworldcommands.*:
+    description: All PerWorldCommands permissions.
+    children:
+      - perworldcommands.cmd
+      - perworldcommands.bypass
 
   perworldcommands.cmd:
     description: PerWorldCommands primary permission.
 
   perworldcommands.bypass:
-    description: PerWorldCommands bypass.
-
-  pwc.bypass:
     description: PerWorldCommands bypass.

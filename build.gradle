@@ -20,7 +20,7 @@ dependencies {
 
 
 processResources {
-    var replaceProperties = [version: plugin_version]
+    var replaceProperties = [plugin_version: plugin_version]
     inputs.properties replaceProperties
 
     filesMatching(['plugin.yml']) {

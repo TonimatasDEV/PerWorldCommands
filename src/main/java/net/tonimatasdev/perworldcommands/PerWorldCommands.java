@@ -3,8 +3,6 @@ package net.tonimatasdev.perworldcommands;
 import net.tonimatasdev.perworldcommands.commands.Commands;
 import net.tonimatasdev.perworldcommands.envents.CheckCommandEvent;
 import net.tonimatasdev.perworldcommands.metrics.Metrics;
-import net.tonimatasdev.perworldcommands.storage.Messages;
-import net.tonimatasdev.perworldcommands.utils.PluginDescription;
 import net.tonimatasdev.perworldcommands.utils.TabulatorCompleter;
 import net.tonimatasdev.perworldcommands.utils.UpdateChecker;
 import org.bukkit.Bukkit;
@@ -12,50 +10,47 @@ import org.bukkit.ChatColor;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class PerWorldCommands extends JavaPlugin implements Listener {
-    private static PerWorldCommands plugin;
+import java.util.Objects;
 
-    public static PerWorldCommands getPlugin() {
-        return plugin;
-    }
+public class PerWorldCommands extends JavaPlugin implements Listener {
+    private static PerWorldCommands instance;
 
     @Override
     public void onEnable() {
-        plugin = this;
+        instance = this;
 
-        PluginDescription.register();
-        Messages.registerMessages();
-        PerWorldCommands.getPlugin().saveDefaultConfig();
+        saveDefaultConfig();
 
-        Bukkit.getPluginManager().registerEvents(new CheckCommandEvent(), PerWorldCommands.getPlugin());
+        Bukkit.getPluginManager().registerEvents(new CheckCommandEvent(), this);
 
-        PerWorldCommands.getPlugin().getCommand("perworldcommands").setExecutor(new Commands());
-        PerWorldCommands.getPlugin().getCommand("pwc").setExecutor(new Commands());
-        PerWorldCommands.getPlugin().getCommand("perworldcommands").setTabCompleter(new TabulatorCompleter());
-        PerWorldCommands.getPlugin().getCommand("pwc").setTabCompleter(new TabulatorCompleter());
+        Objects.requireNonNull(getCommand("perworldcommands")).setExecutor(new Commands());
+        Objects.requireNonNull(getCommand("perworldcommands")).setTabCompleter(new TabulatorCompleter());
 
-        Metrics metrics = new Metrics(PerWorldCommands.getPlugin(), 12875);
-        metrics.addCustomChart(new Metrics.SimplePie("", () -> ""));
 
-        if (PerWorldCommands.getPlugin().getConfig().getBoolean("UpdateChecker")) {
+        if (getConfig().getBoolean("metrics")) {
+            new Metrics(this, 12875);
+        }
+
+        if (getConfig().getBoolean("update-checker")) {
             UpdateChecker.check();
         }
 
-        Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_GREEN + "<---------------------------------------->");
-        Bukkit.getConsoleSender().sendMessage(PluginDescription.getPrefix() + ChatColor.DARK_GREEN + " The plugin has been enabled (Version: " + PluginDescription.getVersion() + ")");
-        Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_GREEN + "<---------------------------------------->");
+        getLogger().info(ChatColor.DARK_GREEN + "<---------------------------------------->");
+        getLogger().info(ChatColor.DARK_GREEN + " The plugin has been enabled (Version: " + getDescription().getVersion() + ")");
+        getLogger().info(ChatColor.DARK_GREEN + "<---------------------------------------->");
     }
 
     @Override
     public void onDisable() {
-        PerWorldCommands.getPlugin().reloadConfig();
-        PerWorldCommands.getPlugin().saveConfig();
+        reloadConfig();
+        saveConfig();
 
-        Messages.reloadMessages();
-        Messages.saveMessages();
+        getLogger().info(ChatColor.DARK_RED + "<---------------------------------------->");
+        getLogger().info(ChatColor.DARK_RED + " The plugin has been disabled (Version: " + getDescription().getVersion() + ")");
+        getLogger().info(ChatColor.DARK_RED + "<---------------------------------------->");
+    }
 
-        Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_RED + "<---------------------------------------->");
-        Bukkit.getConsoleSender().sendMessage(PluginDescription.getPrefix() + ChatColor.DARK_RED + " The plugin has been disabled (Version: " + PluginDescription.getVersion() + ")");
-        Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_RED + "<---------------------------------------->");
+    public static PerWorldCommands getInstance() {
+        return instance;
     }
 }
