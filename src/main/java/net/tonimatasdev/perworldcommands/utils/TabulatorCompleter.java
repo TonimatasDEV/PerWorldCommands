@@ -57,7 +57,7 @@ public class TabulatorCompleter implements org.bukkit.command.TabCompleter {
                 return argList;
             }
 
-            argList.addAll(commandMap.getCommands().stream().map(Command::getName).toList());
+            argList.addAll(commandMap.getCommands().stream().map(Command::getName).collect(Collectors.toList()));
             return argList;
         }
 
