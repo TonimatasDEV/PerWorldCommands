@@ -11,6 +11,11 @@ base {
     archivesName.set("PerWorldCommands")
 }
 
+java {
+    toolchain.languageVersion.set(JavaLanguageVersion.of(8))
+    withSourcesJar()
+}
+
 repositories {
     mavenCentral()
     maven(url = "https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
