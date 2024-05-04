@@ -1,10 +1,10 @@
-package net.tonimatasdev.perworldcommands;
+package dev.tonimatas.perworldcommands;
 
-import net.tonimatasdev.perworldcommands.commands.Commands;
-import net.tonimatasdev.perworldcommands.envents.CheckCommandEvent;
-import net.tonimatasdev.perworldcommands.metrics.Metrics;
-import net.tonimatasdev.perworldcommands.utils.TabulatorCompleter;
-import net.tonimatasdev.perworldcommands.utils.UpdateChecker;
+import dev.tonimatas.perworldcommands.commands.Commands;
+import dev.tonimatas.perworldcommands.envents.CheckCommandEvent;
+import dev.tonimatas.perworldcommands.metrics.Metrics;
+import dev.tonimatas.perworldcommands.utils.TabulatorCompleter;
+import dev.tonimatas.perworldcommands.utils.UpdateChecker;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.event.Listener;

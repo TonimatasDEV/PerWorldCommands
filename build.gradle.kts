@@ -4,7 +4,7 @@ plugins {
 
 val pluginVersion: String by extra
 
-group = "net.tonimatasmc.perworldcommands"
+group = "dev.tonimatas.perworldcommands"
 version = pluginVersion
 
 base {
@@ -22,7 +22,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("org.spigotmc:spigot-api:1.20.1-R0.1-SNAPSHOT")
+    compileOnly("org.spigotmc:spigot-api:1.20.6-R0.1-SNAPSHOT")
 }
 
 

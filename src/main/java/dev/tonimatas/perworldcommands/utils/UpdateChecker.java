@@ -1,6 +1,6 @@
-package net.tonimatasdev.perworldcommands.utils;
+package dev.tonimatas.perworldcommands.utils;
 
-import net.tonimatasdev.perworldcommands.PerWorldCommands;
+import dev.tonimatas.perworldcommands.PerWorldCommands;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 
