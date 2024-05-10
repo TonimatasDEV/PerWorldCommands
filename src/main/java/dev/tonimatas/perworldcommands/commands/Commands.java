@@ -1,14 +1,19 @@
 package dev.tonimatas.perworldcommands.commands;
 
 import dev.tonimatas.perworldcommands.PerWorldCommands;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
+import org.bukkit.World;
+import org.bukkit.command.*;
+import org.bukkit.plugin.SimplePluginManager;
 
-public class Commands implements CommandExecutor {
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
-    @SuppressWarnings("NullableProblems")
+@SuppressWarnings("NullableProblems")
+public class Commands implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (sender.hasPermission("perworldcommands.cmd")) {
@@ -60,5 +65,64 @@ public class Commands implements CommandExecutor {
         }
 
         return true;
+    }
+
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command cmd, String alias, String[] args) {
+        List<String> argList = new ArrayList<>();
+        if (args.length == 1 && sender.hasPermission("perworldcommands.cmd")) {
+            argList.add("cmd");
+            argList.add("reload");
+            argList.add("version");
+            return argList.stream().filter(a -> a.startsWith(args[0])).collect(Collectors.toList());
+        }
+
+        if (args.length == 2 && args[0].equalsIgnoreCase("cmd")) {
+            argList.add("set");
+            argList.add("remove");
+            return argList;
+        }
+
+        if (args.length == 3 && args[1].equalsIgnoreCase("set")) {
+            SimpleCommandMap commandMap;
+
+            try {
+                Field commandMapField = SimplePluginManager.class.getDeclaredField("commandMap");
+                commandMapField.setAccessible(true);
+                commandMap = (SimpleCommandMap) commandMapField.get(Bukkit.getPluginManager());
+            } catch (NoSuchFieldException | IllegalAccessException e) {
+                throw new RuntimeException(e);
+            }
+
+            if (commandMap == null) {
+                argList.add("example");
+                return argList;
+            }
+
+            argList.addAll(commandMap.getCommands().stream().map(Command::getName).collect(Collectors.toList()));
+            return argList;
+        }
+
+        if (args.length == 3 && args[1].equalsIgnoreCase("remove")) {
+            argList.addAll(PerWorldCommands.getInstance().getConfig().getStringList("commands"));
+            return argList;
+        }
+
+        if (args.length == 4 && args[1].equalsIgnoreCase("set")) {
+            for (World world : Bukkit.getWorlds()) {
+                String[] split = args[3].replaceAll(",", ",x").split(",");
+
+                if (split.length == 1) {
+                    argList.add(world.getName());
+                } else {
+                    split[split.length - 1] = "";
+                    argList.add(String.join(",", split).replaceAll("x", "") + world.getName());
+                }
+            }
+
+            return argList;
+        }
+
+        return argList;
     }
 }

@@ -1,4 +1,4 @@
-main: net.tonimatasdev.perworldcommands.PerWorldCommands
+main: dev.tonimatas.perworldcommands.PerWorldCommands
 name: PerWorldCommands
 version: ${pluginVersion}
 load: POSTWORLD

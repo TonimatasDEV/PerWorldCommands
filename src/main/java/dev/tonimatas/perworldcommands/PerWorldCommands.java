@@ -3,7 +3,6 @@ package dev.tonimatas.perworldcommands;
 import dev.tonimatas.perworldcommands.commands.Commands;
 import dev.tonimatas.perworldcommands.envents.CheckCommandEvent;
 import dev.tonimatas.perworldcommands.metrics.Metrics;
-import dev.tonimatas.perworldcommands.utils.TabulatorCompleter;
 import dev.tonimatas.perworldcommands.utils.UpdateChecker;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -24,7 +23,7 @@ public class PerWorldCommands extends JavaPlugin implements Listener {
         Bukkit.getPluginManager().registerEvents(new CheckCommandEvent(), this);
 
         Objects.requireNonNull(getCommand("perworldcommands")).setExecutor(new Commands());
-        Objects.requireNonNull(getCommand("perworldcommands")).setTabCompleter(new TabulatorCompleter());
+        Objects.requireNonNull(getCommand("perworldcommands")).setTabCompleter(new Commands());
 
 
         if (getConfig().getBoolean("metrics")) {
